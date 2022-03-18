@@ -14,6 +14,9 @@ public class BottlesIterator {
     private final String TWO_BOTTLES = "2 bottles of beer on the wall, 2 bottles of beer.\n" +
             "Take one down and pass it around, 1 bottle of beer on the wall.\n\n";
 
+    private final String SIX_BOTTLES = "1 six-pack of beer on the wall, 1 six-pack of beer.\n" +
+            "Take one down and pass it around, 5 bottles of beer on the wall.\n\n";
+
     private final String SEVEN_BOTTLES = "7 bottles of beer on the wall, 7 bottles of beer.\n" +
             "Take one down and pass it around, 1 six-pack of beer on the wall.\n\n";
 
@@ -24,7 +27,7 @@ public class BottlesIterator {
         LOGGER.setLevel(Level.INFO);
 
         try {
-            if (high <= 99 && low >= 0) {
+            if (high <= 99 && high >= low && low >= 0) {
                 for (int i = high; i >= low; i--) {
                     if (i == 0) {
                         sb.append(NO_BOTTLES);
@@ -32,6 +35,8 @@ public class BottlesIterator {
                         sb.append(ONE_BOTTLE);
                     } else if (i == 2) {
                         sb.append(TWO_BOTTLES);
+                    } else if (i == 6) {
+                        sb.append(SIX_BOTTLES);
                     } else if (i == 7) {
                         sb.append(SEVEN_BOTTLES);
                     } else {
@@ -42,6 +47,8 @@ public class BottlesIterator {
                                 .append("\n");
                     }
                 }
+            } else if (high < low) {
+                throw new Exception("Lower limit is higher than upper limit");
             } else {
                 throw new Exception("Upper limit and lower limit exceed boundaries");
             }

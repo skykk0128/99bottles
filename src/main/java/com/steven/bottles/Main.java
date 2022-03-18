@@ -6,7 +6,7 @@ public class Main {
 
     private static BottlesIterator bottlesIterator = new BottlesIterator();
 
-    public static void main(String[] args) throws Exception {
-        System.out.println(bottlesIterator.getBottles(100,1));
+    public static void main(String[] args) {
+        System.out.println(bottlesIterator.getBottles(9,0));
     }
 }
